@@ -135,7 +135,11 @@
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                     </view>
                     <navigationItem key="navigationItem" id="fcy-3m-5hm">
-                        <barButtonItem key="leftBarButtonItem" title="Cancel" id="Fcd-IQ-epG"/>
+                        <barButtonItem key="leftBarButtonItem" title="Cancel" id="Fcd-IQ-epG">
+                            <connections>
+                                <action selector="didTapOnCancel:" destination="gXo-S5-e1g" id="vdv-d1-00j"/>
+                            </connections>
+                        </barButtonItem>
                     </navigationItem>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="7dP-Ou-Fq0" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
