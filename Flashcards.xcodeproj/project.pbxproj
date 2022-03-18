@@ -13,6 +13,7 @@
 		DD0E65AA27C9C43F00E9EAA6 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = DD0E65A827C9C43F00E9EAA6 /* Main.storyboard */; };
 		DD0E65AC27C9C44000E9EAA6 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = DD0E65AB27C9C44000E9EAA6 /* Assets.xcassets */; };
 		DD0E65AF27C9C44000E9EAA6 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = DD0E65AD27C9C44000E9EAA6 /* LaunchScreen.storyboard */; };
+		DDFD2D8727E41443006A541C /* CreationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDFD2D8627E41443006A541C /* CreationViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -24,6 +25,7 @@
 		DD0E65AB27C9C44000E9EAA6 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		DD0E65AE27C9C44000E9EAA6 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		DD0E65B027C9C44000E9EAA6 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		DDFD2D8627E41443006A541C /* CreationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = CreationViewController.swift; path = Flashcards/CreationViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -40,6 +42,7 @@
 		DD0E659627C9C43F00E9EAA6 = {
 			isa = PBXGroup;
 			children = (
+				DDFD2D8627E41443006A541C /* CreationViewController.swift */,
 				DD0E65A127C9C43F00E9EAA6 /* Flashcards */,
 				DD0E65A027C9C43F00E9EAA6 /* Products */,
 			);
@@ -141,6 +144,7 @@
 				DD0E65A727C9C43F00E9EAA6 /* ViewController.swift in Sources */,
 				DD0E65A327C9C43F00E9EAA6 /* AppDelegate.swift in Sources */,
 				DD0E65A527C9C43F00E9EAA6 /* SceneDelegate.swift in Sources */,
+				DDFD2D8727E41443006A541C /* CreationViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
