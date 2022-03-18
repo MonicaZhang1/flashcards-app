@@ -17,6 +17,17 @@ class ViewController: UIViewController {
     @IBOutlet weak var buttonTwo: UIButton!
     @IBOutlet weak var buttonThree: UIButton!
     
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?){
+        //Destination of the segue is the Navigation Controller
+        let navigationController = segue.destination as! UINavigationController
+        
+        //Navigation Controller only contains the Creation View Controller
+        let creationController = navigationController.topViewController as! CreationViewController
+        
+        //Set the flashcardsController property to self
+        creationController.flashcardsController = self 
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -68,6 +79,12 @@ class ViewController: UIViewController {
     
     @IBAction func didTapOnButtonThree(_ sender: Any) {
         buttonThree.isHidden = true
+    }
+    
+    func updateFlashcard(question: String, answer: String) {
+    
+        frontLabel.text = question
+        backLabel.text = answer
     }
     
 }
