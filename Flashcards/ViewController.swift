@@ -25,7 +25,12 @@ class ViewController: UIViewController {
         let creationController = navigationController.topViewController as! CreationViewController
         
         //Set the flashcardsController property to self
-        creationController.flashcardsController = self 
+        creationController.flashcardsController = self
+        
+        if segue.identifier == "EditSegue"{
+        creationController.initialQuestion = frontLabel.text
+        creationController.initialAnswer = backLabel.text
+        }
     }
     
     override func viewDidLoad() {

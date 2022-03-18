@@ -15,9 +15,14 @@ class CreationViewController: UIViewController {
     
     @IBOutlet weak var answerTextField: UITextField!
     
+    var initialQuestion: String?
+    var initialAnswer: String?
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-    
+        
+        questionTextField.text = initialQuestion
+        answerTextField.text = initialAnswer
     }
     
     
