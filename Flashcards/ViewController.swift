@@ -30,6 +30,8 @@ class ViewController: UIViewController {
         if segue.identifier == "EditSegue"{
         creationController.initialQuestion = frontLabel.text
         creationController.initialAnswer = backLabel.text
+        creationController.initialExtraAnswer1 = buttonOne.currentTitle
+        creationController.initialExtraAnswer2 = buttonThree.currentTitle
         }
     }
     
@@ -86,10 +88,14 @@ class ViewController: UIViewController {
         buttonThree.isHidden = true
     }
     
-    func updateFlashcard(question: String, answer: String) {
+    func updateFlashcard(question: String, answer: String, extraAnswer1: String?, extraAnswer2: String?) {
     
         frontLabel.text = question
         backLabel.text = answer
+        
+        buttonOne.setTitle(extraAnswer1, for: .normal)
+        buttonTwo.setTitle(answer, for: .normal)
+        buttonThree.setTitle(extraAnswer2, for: .normal)
     }
     
 }

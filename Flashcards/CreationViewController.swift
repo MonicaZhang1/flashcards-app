@@ -15,14 +15,23 @@ class CreationViewController: UIViewController {
     
     @IBOutlet weak var answerTextField: UITextField!
     
+    @IBOutlet weak var extraAnswer1TextField: UITextField!
+    
+    @IBOutlet weak var extraAnswer2TextField: UITextField!
+    
+    
     var initialQuestion: String?
     var initialAnswer: String?
+    var initialExtraAnswer1: String?
+    var initialExtraAnswer2: String?
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
         questionTextField.text = initialQuestion
         answerTextField.text = initialAnswer
+        extraAnswer1TextField.text = initialExtraAnswer1
+        extraAnswer2TextField.text = initialExtraAnswer2
     }
     
     
@@ -38,8 +47,12 @@ class CreationViewController: UIViewController {
         //Get the text in the answer text field
         let answerText = answerTextField.text
         
+        let extraAnswer1Text = extraAnswer1TextField.text
+        
+        let extraAnswer2Text = extraAnswer2TextField.text
+        
         //Check if empty
-        if questionText == nil || answerText == nil || questionText!.isEmpty ||  answerText!.isEmpty{
+        if questionText == nil || answerText == nil || questionText!.isEmpty ||  answerText!.isEmpty || extraAnswer1Text == nil || extraAnswer2Text == nil || extraAnswer1Text!.isEmpty || extraAnswer2Text!.isEmpty{
             
             //Show error
             let alert = UIAlertController(title: "Missing Text", message: "You need to enter both a question and an answer", preferredStyle: .alert)
@@ -53,7 +66,7 @@ class CreationViewController: UIViewController {
         else {
         
         //Call the fucntion to update the flashcard
-        flashcardsController.updateFlashcard(question: questionText!, answer: answerText!)
+            flashcardsController.updateFlashcard(question: questionText!, answer: answerText!, extraAnswer1: extraAnswer1Text!, extraAnswer2: extraAnswer2Text!)
         
         //Dismiss
         dismiss(animated: true)
