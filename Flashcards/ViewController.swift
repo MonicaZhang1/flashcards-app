@@ -80,9 +80,7 @@ class ViewController: UIViewController {
         buttonThree.layer.borderWidth = 3.0
         buttonThree.layer.borderColor = #colorLiteral(red: 0.2588235438, green: 0.7568627596, blue: 0.9686274529, alpha: 1)
         
-        //Browsing through flashcards part 2 DOUBLECHECK
         updateFlashcard(question: "What is the capital of Indonesia?", answer: "Jakarta", extraAnswer1: "Surabaya", extraAnswer2: "Bali")
-        
     }
 
     @IBAction func didTapOnFlashcard(_ sender: Any){
@@ -180,6 +178,24 @@ class ViewController: UIViewController {
         
         //Update labels
         updateLabels()
+        
+        //Save flashcards
+        saveAllFlashcardsToDisk()
+    }
+    
+    func saveAllFlashcardsToDisk() {
+
+        //From flashcard array to dictionary array
+        let dictionaryArray = flashcards.map { (card) -> [String: String] in
+            return ["question": card.question, "answer": card.answer]
+        }
+        
+        //Save array on disk using UserDefaults
+        UserDefaults.standard.set(dictionaryArray, forKey: "flashcards")
+        
+        //Log it
+        print("Flashcards saved to UserDefaults")
+        
     }
     
 }
