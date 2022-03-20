@@ -1,5 +1,24 @@
 ## Flashcards
 
+## Lab 3
+
+### App Description
+
+Add on to the Flashcards app so users can create and browse through multiple flashcards.
+
+### App Walk-though
+
+<img src="http://g.recordit.co/C1PNk4dNw2.gif" width=200><br>
+
+## Required
+- [X] User can browse through multiple flashcards
+- [X] User can re-open the app and see previously created flashcards
+- [X] Push code to GitHub
+## Optional
+- [ ] User can delete a flashcard
+- [ ] User can edit existing flashcard
+- [ ] User can store multiple choice questions
+
 ## Lab 2
 
 ### App Description
