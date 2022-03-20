@@ -80,7 +80,17 @@ class ViewController: UIViewController {
         buttonThree.layer.borderWidth = 3.0
         buttonThree.layer.borderColor = #colorLiteral(red: 0.2588235438, green: 0.7568627596, blue: 0.9686274529, alpha: 1)
         
-        updateFlashcard(question: "What is the capital of Indonesia?", answer: "Jakarta", extraAnswer1: "Surabaya", extraAnswer2: "Bali")
+        //Read saved flashcards
+        readSavedFlashcards()
+        
+        //Adding initial flashcard if needed
+        if flashcards.count == 0 {
+            updateFlashcard(question: "What is the capital of Indonesia?", answer: "Jakarta", extraAnswer1: "Surabaya", extraAnswer2: "Bali")
+        }
+        else {
+            updateLabels()
+            updateNextPrevButtons()
+        }
     }
 
     @IBAction func didTapOnFlashcard(_ sender: Any){
@@ -196,6 +206,21 @@ class ViewController: UIViewController {
         //Log it
         print("Flashcards saved to UserDefaults")
         
+    }
+    
+    func readSavedFlashcards(){
+        
+        //Read dictionary array from disk (if any)
+        if let dictionaryArray = UserDefaults.standard.array(forKey: "flashcards") as? [[String: String]] {
+            
+            //Know for sure there is a dictionary array
+            let savedCards = dictionaryArray.map { dictionary -> Flashcard in
+                return Flashcard(question: dictionary["question"]!, answer: dictionary["answer"]!)
+            }
+            
+            //Put all these cards in our flashcards array
+            flashcards.append(contentsOf: savedCards)
+        }
     }
     
 }
