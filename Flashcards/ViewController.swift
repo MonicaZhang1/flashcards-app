@@ -156,6 +156,18 @@ class ViewController: UIViewController {
     }
      
     func deleteCurrentFlashcard(){
+        
+        //Delete current
+        flashcards.remove(at: currentIndex)
+        
+        //Special case: Check if last card ws deleted
+        if currentIndex > flashcards.count - 1 {
+            currentIndex = flashcards.count - 1
+        }
+        
+        updateNextPrevButtons()
+        updateLabels()
+        saveAllFlashcardsToDisk()
     }
     
     func updateLabels() {
