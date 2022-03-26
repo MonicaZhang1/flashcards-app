@@ -65,11 +65,11 @@ class CreationViewController: UIViewController {
         }
         else {
         
-        //Call the fucntion to update the flashcard
+            //Call the function to update the flashcard
             flashcardsController.updateFlashcard(question: questionText!, answer: answerText!, extraAnswer1: extraAnswer1Text!, extraAnswer2: extraAnswer2Text!)
         
-        //Dismiss
-        dismiss(animated: true)
+            //Dismiss
+            dismiss(animated: true)
         }
     }
     
