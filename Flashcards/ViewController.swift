@@ -34,6 +34,9 @@ class ViewController: UIViewController {
     //Current flashcard index
     var currentIndex = 0
     
+    //Button to remember what the correct answer is
+    var correctAnswerButton: UIButton!
+    
     override func prepare(for segue: UIStoryboardSegue, sender: Any?){
         //Destination of the segue is the Navigation Controller
         let navigationController = segue.destination as! UINavigationController
@@ -167,13 +170,29 @@ class ViewController: UIViewController {
     }
     
     @IBAction func didTapOnButtonOne(_ sender: Any) {
-        buttonOne.isHidden = true
+        //If correct answer, flip flashcard, else disable button and show front label
+        if buttonOne == correctAnswerButton {
+            flipFlashcard()
+        } else {
+            frontLabel.isHidden = false
+            buttonOne.isEnabled = false
+        }
     }
     @IBAction func didTapOnButtonTwo(_ sender: Any) {
-        frontLabel.isHidden = true
+        if buttonTwo == correctAnswerButton {
+            flipFlashcard()
+        } else {
+            frontLabel.isHidden = false
+            buttonTwo.isEnabled = false
+        }
     }
     @IBAction func didTapOnButtonThree(_ sender: Any) {
-        buttonThree.isHidden = true
+        if buttonThree == correctAnswerButton {
+            flipFlashcard()
+        } else {
+            frontLabel.isHidden = false
+            buttonThree.isEnabled = false
+        }
     }
     
     @IBAction func didTapOnPrev(_ sender: Any) {
@@ -248,6 +267,20 @@ class ViewController: UIViewController {
         //Update labels
         frontLabel.text = currentFlashcard.question
         backLabel.text = currentFlashcard.answer
+        
+        //Update buttons
+        let buttons = [buttonOne, buttonTwo, buttonThree].shuffled()
+        let answers = [currentFlashcard.answer, currentFlashcard.extraAnswer1,currentFlashcard.extraAnswer2].shuffled()
+        
+        for (button, answer) in zip(buttons, answers){
+            //Set the title of this random button with a random answer
+            button?.setTitle(answer, for: .normal)
+            
+            //If this is the correct answer save the button
+            if answer == currentFlashcard.answer {
+                correctAnswerButton = button
+            }
+        }
     }
     
     func updateNextPrevButtons() {
@@ -275,13 +308,6 @@ class ViewController: UIViewController {
             flashcards[currentIndex] = flashcard
         } else {
             
-        frontLabel.text = flashcard.question
-        backLabel.text = flashcard.answer
-        
-        buttonOne.setTitle(extraAnswer1, for: .normal)
-        buttonTwo.setTitle(answer, for: .normal)
-        buttonThree.setTitle(extraAnswer2, for: .normal)
-        
         //Adding flashcard in the flashcards array
         flashcards.append(flashcard)
         
