@@ -94,11 +94,16 @@ class ViewController: UIViewController {
     }
 
     @IBAction func didTapOnFlashcard(_ sender: Any){
-        if (frontLabel.isHidden == false){
-            frontLabel.isHidden = true
-        }
-        else{
-            frontLabel.isHidden = false
+        flipFlashcard()
+    }
+    func flipFlashcard() {
+        UIView.transition(with: card, duration: 0.3, options: .transitionFlipFromRight) {
+            if (self.frontLabel.isHidden == false){
+                self.frontLabel.isHidden = true
+            }
+            else{
+                self.frontLabel.isHidden = false
+            }
         }
     }
     
