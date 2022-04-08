@@ -4,7 +4,7 @@
 
 ### App Description
 
-The app has an icon, splash screen, and animations when flipping thorugh flashcards and revealing an answer. 
+The app has an icon, splash screen, and animations when flipping through flashcards and revealing the answer. 
 
 ### App Walk-though
 
