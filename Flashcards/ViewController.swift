@@ -125,8 +125,31 @@ class ViewController: UIViewController {
         UIView.animate(withDuration: 0.3) {
             self.card.transform = CGAffineTransform.identity
         }
-        
     }
+    
+    func animateCardOutPrevTap(){
+        UIView.animate(withDuration: 0.3, animations: {self.card.transform = CGAffineTransform.identity.translatedBy(x: 300.0, y: 0.0)}, completion: {
+            finished in
+            
+            //Update labels
+            self.updateLabels()
+            
+            //Run other animation
+            self.animateCardInPrevTap()
+        })
+    }
+    
+    func animateCardInPrevTap(){
+        
+        //Start on the left side (don't animate)
+        card.transform = CGAffineTransform.identity.translatedBy(x: -300.0, y: 0.0)
+        
+        //Animate card going back to original position
+        UIView.animate(withDuration: 0.3){
+            self.card.transform = CGAffineTransform.identity
+        }
+    }
+    
     @IBAction func didTapOnButtonOne(_ sender: Any) {
         buttonOne.isHidden = true
     }
@@ -147,6 +170,9 @@ class ViewController: UIViewController {
         
         //Update buttons
         updateNextPrevButtons()
+        
+        //Animate card out for previous
+        animateCardOutPrevTap()
     }
     
     @IBAction func didTapOnNext(_ sender: Any) {
@@ -160,6 +186,7 @@ class ViewController: UIViewController {
         //Update buttons
         updateNextPrevButtons()
         
+        //Animate card out
         animateCardOut()
     }
     
