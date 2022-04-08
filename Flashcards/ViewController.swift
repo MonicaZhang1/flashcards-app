@@ -10,6 +10,8 @@ import UIKit
 struct Flashcard {
     var question: String
     var answer: String
+    var extraAnswer1: String
+    var extraAnswer2: String
 }
 
 class ViewController: UIViewController {
@@ -85,7 +87,7 @@ class ViewController: UIViewController {
         
         //Adding initial flashcard if needed
         if flashcards.count == 0 {
-            updateFlashcard(question: "What is the capital of Indonesia?", answer: "Jakarta", extraAnswer1: "Surabaya", extraAnswer2: "Bali")
+            updateFlashcard(question: "What is the capital of Indonesia?", answer: "Jakarta", extraAnswer1: "Surabaya", extraAnswer2: "Bali", isExisting: false)
         }
         else {
             updateLabels()
@@ -250,9 +252,15 @@ class ViewController: UIViewController {
         }
     }
     
-    func updateFlashcard(question: String, answer: String, extraAnswer1: String?, extraAnswer2: String?) {
-    
-        let flashcard = Flashcard(question: question, answer: answer)
+    func updateFlashcard(question: String, answer: String, extraAnswer1: String, extraAnswer2: String, isExisting: Bool) {
+        
+        let flashcard = Flashcard(question: question, answer: answer, extraAnswer1: extraAnswer1, extraAnswer2: extraAnswer2)
+        
+        if isExisting {
+            //Replace existing flashcard
+            flashcards[currentIndex] = flashcard
+        } else {
+            
         frontLabel.text = flashcard.question
         backLabel.text = flashcard.answer
         
@@ -279,37 +287,38 @@ class ViewController: UIViewController {
         
         //Save flashcards
         saveAllFlashcardsToDisk()
+        }
     }
     
     func saveAllFlashcardsToDisk() {
 
         //From flashcard array to dictionary array
         let dictionaryArray = flashcards.map { (card) -> [String: String] in
-            return ["question": card.question, "answer": card.answer]
+            return ["question": card.question, "answer": card.answer, "extraAnswer1": card.extraAnswer1, "extraAnswer2": card.extraAnswer2]
         }
-        
+
         //Save array on disk using UserDefaults
         UserDefaults.standard.set(dictionaryArray, forKey: "flashcards")
-        
+
         //Log it
         print("Flashcards saved to UserDefaults")
-        
+
     }
     
     func readSavedFlashcards(){
-        
+
         //Read dictionary array from disk (if any)
         if let dictionaryArray = UserDefaults.standard.array(forKey: "flashcards") as? [[String: String]] {
-            
+
             //Know for sure there is a dictionary array
             let savedCards = dictionaryArray.map { dictionary -> Flashcard in
-                return Flashcard(question: dictionary["question"]!, answer: dictionary["answer"]!)
+                return Flashcard(question: dictionary["question"]!, answer: dictionary["answer"]!, extraAnswer1: dictionary["extraAnswer1"]!, extraAnswer2: dictionary["extraAnswer2"]!)
             }
-            
+
             //Put all these cards in our flashcards array
             flashcards.append(contentsOf: savedCards)
         }
     }
-    
+
 }
 
